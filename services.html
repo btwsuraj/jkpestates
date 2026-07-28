@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>Our Core Services | Jay Keshav Property</title>
+    <title>Our Professional Services | Jay Keshav Property</title>
+    
     <meta name="description" content="Explore our comprehensive real estate services in Vasai-Virar. We offer expert guidance for buying residential flats, leasing commercial shops, home loans, and property management.">
     <meta name="keywords" content="real estate services nalasopara, buy flat vasai virar, commercial shop on rent, industrial gala nalasopara, home loan agent, NRI property management">
     <meta name="author" content="Jay Keshav Property">
@@ -14,7 +14,6 @@
     <link rel="icon" href="BrandLogo.jpeg" type="image/jpeg">
     <link rel="canonical" href="https://www.jkpestates.com/services.html">
 
-   
     <meta property="og:title" content="Our Core Services | Jay Keshav Property">
     <meta property="og:description" content="Explore our comprehensive real estate services in Vasai-Virar. We offer expert guidance for buying residential flats, leasing commercial shops, home loans, and property management.">
     <meta property="og:image" content="https://www.jkpestates.com/BrandLogo.jpeg">
@@ -25,8 +24,7 @@
     <meta name="twitter:title" content="Our Core Services | Jay Keshav Property">
     <meta name="twitter:description" content="Explore our comprehensive real estate services in Vasai-Virar. We offer expert guidance for buying residential flats, leasing commercial shops, home loans, and property management.">
     <meta name="twitter:image" content="https://www.jkpestates.com/BrandLogo.jpeg">
-    
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,12 +40,33 @@
     </script>
    
     <style>
+        @keyframes slide-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes slide-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        
+        .marquee-container {
+            overflow: hidden; white-space: nowrap; position: relative; width: 100%; padding: 15px 0; display: flex;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-content-left { display: flex; animation: slide-left 50s linear infinite; min-width: max-content; }
+        .marquee-content-right { display: flex; animation: slide-right 80s linear infinite; min-width: max-content; }
+        .marquee-container:hover .marquee-content-left, .marquee-container:hover .marquee-content-right { animation-play-state: paused; }
+        
+        /* Updated Partner Card Styles for Colorful Logos and Bottom Text */
+        .partner-card {
+            width: 200px; height: 120px; margin-right: 24px; flex-shrink: 0; 
+            display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; 
+            transition: all 0.3s ease; cursor: pointer; padding: 1rem;
+        }
+        .partner-card:hover { border-color: #f59e0b; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15); transform: translateY(-3px); }
+
         .btn-modern-effect { position: relative; overflow: hidden; z-index: 1; }
         .btn-modern-effect::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: all 0.6s ease; z-index: -1; }
         .btn-modern-effect:hover::before { left: 100%; }
     </style>
 </head>
-<body class="bg-[#FDFBF7] text-slate-800 antialiased selection:bg-amber-400 selection:text-slate-900">
+<body class="bg-[#FDFBF7] text-slate-800 antialiased selection:bg-amber-400 selection:text-slate-900 overflow-x-hidden">
 
     <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
@@ -57,7 +76,7 @@
                 </a>
             </div>
             
-            <nav class="hidden md:flex space-x-8 font-semibold text-slate-700 text-sm tracking-wide">
+            <nav class="hidden md:flex space-x-8 font-semibold text-slate-700 text-sm tracking-wide items-center">
                 <a href="index.html" class="hover:text-amber-600 transition-colors">HOME</a>
                 <a href="services.html" class="text-amber-600 transition-colors">SERVICES</a>
                 <a href="why-us.html" class="hover:text-amber-600 transition-colors">WHY US</a>
@@ -66,10 +85,19 @@
             </nav>
             
             <div class="flex items-center gap-2 sm:gap-4">
-                <a href="https://wa.me/919607731867" target="_blank" class="btn-modern-effect inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-bold bg-[#25D366] text-white hover:bg-[#128C7E] transition-all shadow-md shadow-green-900/10 transform hover:-translate-y-0.5 gap-2">
-                    <i class="fab fa-whatsapp text-lg"></i> <span class="hidden sm:inline">Chat Now</span><span class="sm:hidden">Chat</span>
+                <a href="why-us.html#rera-section" title="Scan to Verify RERA" class="hidden sm:flex flex-col items-center justify-center px-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:border-amber-400 hover:bg-white hover:shadow-sm transition-all group">
+                    <i class="fas fa-qrcode text-slate-800 text-xl group-hover:text-amber-500 transition-colors"></i>
+                    <span class="text-[9px] font-bold text-slate-500 mt-0.5 tracking-wider">A031242602523</span>
                 </a>
-                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-700 text-2xl focus:outline-none pl-2 transition-colors duration-200">
+                <a href="why-us.html#rera-section" title="Verify RERA" class="sm:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 hover:text-amber-500 hover:border-amber-400 transition-all mr-1">
+                    <i class="fas fa-qrcode text-sm"></i>
+                    <span class="text-[7px] font-bold text-slate-500 mt-0.5">RERA</span>
+                </a>
+
+                <a href="https://wa.me/919607731867" target="_blank" class="btn-modern-effect inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#25D366] text-white hover:bg-[#128C7E] transition-all shadow-md shadow-green-900/10 transform hover:-translate-y-0.5 gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> <span class="hidden md:inline">Chat Now</span><span class="md:hidden">Chat</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-700 text-2xl focus:outline-none pl-1 transition-colors duration-200">
                     <i id="menu-icon" class="fas fa-bars"></i>
                 </button>
             </div>
@@ -87,17 +115,16 @@
     <section class="pt-32 pb-16 px-4 text-center max-w-4xl mx-auto">
         <span class="text-amber-600 font-bold tracking-widest text-sm uppercase">Comprehensive Real Estate Agency</span>
         <h1 class="text-4xl lg:text-5xl font-extrabold text-[#0D1B2A] uppercase font-cinzel tracking-wide mt-4 mb-6">Our Core Services</h1>
-        <p class="text-lg text-slate-600 font-medium leading-relaxed">From helping first-time buyers find their dream homes to managing heavy industrial portfolios and commercial retail expansions, we handle the entire property lifecycle in Vasai-Virar. Jay Keshav Property guarantees transparency, rapid processing, and absolute peace of mind for every transaction.</p>
+        <p class="text-lg text-slate-600 font-medium leading-relaxed">From helping first-time buyers find their dream homes to managing heavy industrial portfolios, we handle the entire property lifecycle in Vasai-Virar. Jay Keshav Property guarantees transparency, rapid processing, and absolute peace of mind for every transaction.</p>
     </section>
 
+    <!-- EXPANDED SERVICES GRID (9 ITEMS) -->
     <section class="pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            
             <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
                 <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-home"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Residential Flats</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Expert guidance for buying, selling, or renting premium 1 BHK, 2 BHK, and 3 BHK apartments. We feature verified ready-to-move and under-construction properties with clear titles across Nalasopara, Vasai, and Virar. Our team manages negotiations to ensure you get the best square footage for your budget without hidden costs.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Expert guidance for buying, selling, or renting premium 1 BHK, 2 BHK, and 3 BHK apartments. We feature verified ready-to-move and under-construction properties with clear titles across Nalasopara, Vasai, and Virar.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">View Flats <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
             
@@ -105,40 +132,274 @@
                 <div class="absolute top-0 right-0 bg-amber-500 text-slate-900 text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-widest uppercase">HIGH DEMAND</div>
                 <div class="w-14 h-14 mb-6 mt-2 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center text-xl group-hover:bg-amber-500 group-hover:text-white transition-colors"><i class="fas fa-store"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Commercial Shops</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Establish your retail footprint or expand your commercial portfolio. We secure strategically located commercial spaces featuring high footfall, main road visibility, and excellent brand exposure. Perfect for boutiques, clinics, corporate branch offices, and franchise outlets.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Establish your retail footprint or expand your commercial portfolio. We secure strategically located commercial spaces featuring high footfall, main road visibility, and excellent brand exposure.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Explore Spaces <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
             
             <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
                 <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-industry"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Industrial Galas</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Acquire or lease heavy-duty industrial galas, factory units, and manufacturing warehouses in the bustling, business-friendly Vasai-Virar industrial corridors. We ensure the spaces meet heavy power load requirements, heavy vehicle access, and municipal compliance standards.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Acquire or lease heavy-duty industrial galas, factory units, and manufacturing warehouses in the bustling, business-friendly Vasai-Virar industrial corridors ensuring municipal compliance standards.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Locate Industry <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
 
             <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
                 <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-user-shield"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Property Mgmt & NRI</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">We take the headache out of property ownership, particularly for out-of-state investors and NRIs. We handle tenant background checks, secure rent collection, periodic vacant property inspections, bulletproof legal drafting for rent agreements, and dedicated maintenance support.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">We take the headache out of property ownership. We handle tenant background checks, secure rent collection, periodic vacant property inspections, bulletproof legal drafting for rent agreements, and NRI support.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Get Managed <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
 
             <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
                 <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-chart-pie"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Investment Advisory</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Maximize your capital returns with our data-driven portfolio planning. We help seasoned investors secure pre-leased, high-yield rental assets, under-construction discounted units, and highly lucrative commercial spaces before they hit the general open market.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Maximize your capital returns with our data-driven portfolio planning. We help seasoned investors secure pre-leased, high-yield rental assets and under-construction discounted units.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Boost ROI <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
 
             <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
                 <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-building-columns"></i></div>
                 <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Home Loan Assistance</h3>
-                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Stop stressing over complex bank approvals. Our extensive financial network offers mortgage consulting, loan eligibility guidance, and seamless bank liaison services to fund your dream property. We work with top Indian banks to secure you the lowest possible interest rates.</p>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Stop stressing over bank approvals. Our extensive financial network offers mortgage consulting, loan eligibility guidance, and seamless bank liaison services to fund your dream property.</p>
                 <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Check Eligibility <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
+                <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-file-signature"></i></div>
+                <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Agreements & Police NOC</h3>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Skip the tedious government queues. We handle online rent agreement drafting, seamless tenant Police Intimation (NOC), stamp duty payment processing, and society transfer documentation.</p>
+                <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Get Docs Handled <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
+                <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-scale-balanced"></i></div>
+                <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Property Valuation</h3>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Ensure you never under-price your asset. We provide accurate market value assessments for resale properties and commercial units, utilizing 13 years of hyper-local sales data.</p>
+                <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Value Property <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+
+            <div class="bg-white p-8 border border-slate-200 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col group">
+                <div class="w-14 h-14 mb-6 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center text-xl group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-couch"></i></div>
+                <h3 class="font-cinzel text-xl font-bold text-[#0D1B2A] uppercase mb-3">Interior Consultation</h3>
+                <p class="text-slate-600 text-sm leading-relaxed flex-grow">Turn an empty flat into a dream home. We connect our buyers with trusted local interior designers, modular kitchen experts, and reliable contractors at special partnered rates.</p>
+                <a href="index.html#lead-form" class="text-amber-600 font-bold text-xs uppercase tracking-widest border-b border-amber-400 self-start mt-6 group-hover:pr-2 transition-all">Explore Interiors <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
         </div>
     </section>
 
+    <!-- OFFICIAL PARTNERS SECTION WITH COLORFUL LOGOS -->
+    <section class="py-20 bg-white border-y border-slate-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">Authorized & Trusted By</span>
+            <h2 class="text-3xl font-extrabold tracking-tight text-[#0D1B2A] font-cinzel uppercase sm:text-4xl mt-2">Our Official Partners</h2>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">We are officially verified channel partners for the top real estate developers and hold direct associations with India's leading banks for fast, hassle-free processing.</p>
+        </div>
+
+        <!-- Track 1: Banking Partners -->
+        <div class="mb-4 text-center">
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Banking Associates</h3>
+        </div>
+        <div class="marquee-container mb-12">
+            <div class="marquee-content-left">
+                <!-- SET 1 -->
+                <a href="services.html" class="partner-card group">
+                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
+                </a>
+                <!-- SET 2 -->
+                <a href="services.html" class="partner-card group">
+                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
+                </a>
+                <a href="services.html" class="partner-card group">
+                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Track 2: Builder Partners -->
+        <div class="mb-6 mt-8 text-center">
+            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Official Developer Partners</h3>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content-right">
+                <!-- SET 1 -->
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
+                </a>
+
+                <!-- SET 2 -->
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
+                </a>
+
+                <!-- SET 3 -->
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
+                </a>
+
+                <!-- SET 4 -->
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
+                </a>
+                <a href="index.html#lead-form" class="partner-card group">
+                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Process Section -->
     <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-[#0D1B2A] text-white p-10 lg:p-16 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500 opacity-5 rounded-full blur-3xl"></div>
@@ -208,7 +469,6 @@
         </div>
     </section>
 
-    
     <footer class="bg-[#070e17] text-slate-400 py-12 px-4 text-center border-t border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-4">
             <h4 class="text-xl font-bold text-white font-cinzel tracking-widest uppercase">JAY KESHAV <span class="text-amber-600 font-normal">Property</span></h4>
