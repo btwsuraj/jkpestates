@@ -11,19 +11,19 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0D1B2A">
     
-    <link rel="icon" href="BrandLogo.jpeg" type="image/jpeg">
+    <link rel="shortcut icon" href="BrandLogo.png">
     <link rel="canonical" href="https://www.jkpestates.com/why-us.html">
 
-    <meta property="og:title" content="Why Choose Us | Jay Keshav Property">
+    <meta property="og:title" content="Why Choose Us | Jay Keshav Property - RERA Registered">
     <meta property="og:description" content="With 13+ years of experience and over 1000+ happy families, Jay Keshav Property is your trusted real estate partner in Nalasopara offering 100% transparent deals.">
-    <meta property="og:image" content="https://www.jkpestates.com/BrandLogo.jpeg">
+    <meta property="og:image" content="https://www.jkpestates.com/BrandLogo.png">
     <meta property="og:url" content="https://www.jkpestates.com/why-us.html">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Why Choose Us | Jay Keshav Property">
     <meta name="twitter:description" content="With 13+ years of experience and over 1000+ happy families, Jay Keshav Property is your trusted real estate partner in Nalasopara offering 100% transparent deals.">
-    <meta name="twitter:image" content="https://www.jkpestates.com/BrandLogo.jpeg">
+    <meta name="twitter:image" content="https://www.jkpestates.com/BrandLogo.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,30 +40,69 @@
     </script>
     <style>
         @keyframes slide-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes slide-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* DESKTOP MARQUEE */
         .marquee-container {
             overflow: hidden; white-space: nowrap; position: relative; width: 100%; padding: 15px 0; display: flex;
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
         .marquee-content-left { display: flex; animation: slide-left 50s linear infinite; min-width: max-content; }
-        .marquee-content-right { display: flex; animation: slide-right 35s linear infinite; min-width: max-content; }
-        .marquee-container:hover .marquee-content-left, .marquee-container:hover .marquee-content-right { animation-play-state: paused; }
+        .marquee-container:hover .marquee-content-left { animation-play-state: paused; }
         
-        /* Updated Partner Card Styles for Colorful Logos and Bottom Text */
-        .partner-card {
-            width: 200px; height: 120px; margin-right: 24px; flex-shrink: 0; 
-            display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
-            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; 
-            transition: all 0.3s ease; cursor: pointer; padding: 1rem;
-        }
-        .partner-card:hover { border-color: #f59e0b; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15); transform: translateY(-3px); }
-
         .btn-modern-effect { position: relative; overflow: hidden; z-index: 1; }
         .btn-modern-effect::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: all 0.6s ease; z-index: -1; }
         .btn-modern-effect:hover::before { left: 100%; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .radio-group-error { border: 2px solid #ef4444 !important; background-color: #fef2f2 !important; padding: 10px; border-radius: 1rem; }
+        .star-rating i { transition: color 0.2s; }
+        .star-rating i:hover, .star-rating i.active { color: #f59e0b; }
+
+        /* NATIVE MOBILE SWIPE STYLES */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @media (max-width: 767px) {
+            .mobile-swipe-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 1rem;
+                padding-left: 7.5vw;
+                padding-right: 7.5vw;
+                padding-bottom: 1rem;
+            }
+            .mobile-swipe-card {
+                scroll-snap-align: center !important;
+                flex: 0 0 85vw !important;
+                min-width: 85vw !important;
+                max-width: 85vw !important;
+                margin-right: 0 !important;
+            }
+            .reviews-marquee {
+                mask-image: none !important;
+                -webkit-mask-image: none !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                padding-bottom: 1.5rem !important;
+                padding-left: 1rem !important;
+                scroll-padding-left: 1rem;
+                scroll-behavior: smooth;
+            }
+            .reviews-marquee .marquee-content-left {
+                animation: none !important;
+                padding-right: 1rem; 
+            }
+            .review-card {
+                scroll-snap-align: center !important;
+                width: 85vw !important;
+                margin-right: 1rem !important; 
+            }
+        }
+        @media (min-width: 768px) {
+            .review-card { width: 360px; white-space: normal; margin-right: 24px; flex-shrink: 0; }
+        }
     </style>
 </head>
 <body class="bg-[#FDFBF7] text-slate-800 antialiased selection:bg-amber-400 selection:text-slate-900 overflow-x-hidden">
@@ -72,7 +111,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
             <div class="flex flex-col transform hover:scale-105 transition-transform duration-300">
                 <a href="index.html" class="flex items-center">
-                    <img src="BrandLogo.jpeg" alt="Jay Keshav Property Logo" class="h-16 w-auto object-contain">
+                    <img src="BrandLogo.png" alt="Jay Keshav Property Logo" class="h-16 w-auto object-contain">
                 </a>
             </div>
             
@@ -85,12 +124,10 @@
             </nav>
             
             <div class="flex items-center gap-2 sm:gap-4">
-                <!-- RERA VERIFIED QR NAV BUTTON -->
                 <a href="#rera-section" title="Scan to Verify RERA" class="hidden sm:flex flex-col items-center justify-center px-4 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:border-amber-400 hover:bg-white hover:shadow-sm transition-all group">
                     <i class="fas fa-qrcode text-slate-800 text-xl group-hover:text-amber-500 transition-colors"></i>
                     <span class="text-[9px] font-bold text-slate-500 mt-0.5 tracking-wider">A031242602523</span>
                 </a>
-                <!-- Mobile QR -->
                 <a href="#rera-section" title="Verify RERA" class="sm:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 hover:text-amber-500 hover:border-amber-400 transition-all mr-1">
                     <i class="fas fa-qrcode text-sm"></i>
                     <span class="text-[7px] font-bold text-slate-500 mt-0.5">RERA</span>
@@ -128,9 +165,9 @@
         <h2 class="text-3xl font-cinzel font-bold text-[#0D1B2A] uppercase mb-8 relative z-10">Official Credentials</h2>
         
         <div class="flex flex-row items-center justify-center gap-6 sm:gap-16 mb-10 relative z-10">
-            <img src="maharera-logo.png" alt="MahaRERA Verified" class="h-24 w-auto object-contain">
+            <img src="maharera-logo.png" alt="MahaRERA Verified" class="h-16 sm:h-24 w-auto object-contain">
             <div class="w-[1px] min-w-[1px] h-16 sm:h-20 bg-slate-300 flex-shrink-0"></div>
-            <img src="rswa-logo.png" alt="RSWA Verified" class="h-24 w-auto object-contain">
+            <img src="rswa-logo.png" alt="RSWA Verified" class="h-16 sm:h-24 w-auto object-contain">
         </div>
 
         <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-inner inline-block w-full max-w-md relative z-10">
@@ -139,161 +176,7 @@
             
             <div class="mt-8 pt-6 border-t border-slate-200">
                 <p class="text-xs font-bold text-slate-400 uppercase mb-4 flex items-center justify-center gap-2"><i class="fas fa-qrcode text-amber-500 text-lg"></i> Scan to Verify Official Status</p>
-                <!-- Ensure this QR image is in your folder -->
                 <img src="your-qr-code.jpeg" alt="RERA QR Scanner" class="w-48 h-48 mx-auto border-8 border-white shadow-xl rounded-2xl group-hover:scale-105 transition-transform duration-300">
-            </div>
-        </div>
-    </section>
-
-    <!-- OFFICIAL CHANNEL PARTNERS & BANKING PARTNERS -->
-    <section class="py-20 bg-[#FDFBF7] border-y border-slate-200 overflow-hidden mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">Authorized & Trusted By</span>
-            <h2 class="text-3xl font-extrabold tracking-tight text-[#0D1B2A] font-cinzel uppercase sm:text-4xl mt-2">Our Official Partners</h2>
-            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">We are officially verified channel partners for the top real estate developers and hold direct associations with India's leading banks for fast loan processing.</p>
-        </div>
-
-        <!-- Track 1: Banking Partners -->
-        <div class="mb-6 text-center">
-            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Banking Associates</h3>
-        </div>
-        <div class="marquee-container mb-12">
-            <div class="marquee-content-left">
-                <!-- SET 1 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
-                </a>
-
-                <!-- SET 2 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Track 2: Builder Partners -->
-        <div class="mb-6 mt-8 text-center">
-            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Official Developer Partners</h3>
-        </div>
-        <div class="marquee-container">
-            <div class="marquee-content-right">
-                <!-- SET 1 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
-                </a>
-
-                <!-- SET 2 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
-                </a>
             </div>
         </div>
     </section>
@@ -327,43 +210,53 @@
         </div>
     </section>
 
-    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
+    <!-- WHAT SETS US APART (Swipeable on Mobile) -->
+    <section class="py-16 max-w-7xl mx-auto md:px-6 lg:px-8">
+        <div class="text-center mb-12 px-4">
             <h2 class="text-3xl font-cinzel font-bold uppercase text-[#0D1B2A]">What Sets Us Apart</h2>
             <div class="w-16 h-1 bg-amber-500 mx-auto mt-4"></div>
         </div>
-        <div class="grid sm:grid-cols-2 gap-6 relative">
-            
-            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group">
+
+        <div id="whyus-swipe" class="grid sm:grid-cols-2 gap-6 relative mobile-swipe-grid hide-scrollbar">
+            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group mobile-swipe-card whitespace-normal">
                 <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center mb-6 group-hover:bg-[#0D1B2A] group-hover:text-white transition-all"><i class="fas fa-building text-2xl"></i></div>
                 <h4 class="font-bold font-cinzel text-xl text-[#0D1B2A] mb-4 uppercase">Comprehensive Real Estate Solutions</h4>
                 <p class="text-slate-600 text-base leading-relaxed">From negotiating the sale of your commercial shop at the optimal price to helping you buy your dream family home, we seamlessly manage the entire lifecycle of your real estate journey.</p>
             </div>
 
-            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group">
+            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group mobile-swipe-card whitespace-normal">
                 <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center mb-6 group-hover:bg-[#0D1B2A] group-hover:text-white transition-all"><i class="fas fa-user-check text-2xl"></i></div>
-                <h4 class="font-bold font-cinzel text-xl text-[#0D1B2A] mb-4 uppercase">Reliable Tenant Placement & Management</h4>
+                <h4 class="font-bold font-cinzel text-xl text-[#0D1B2A] mb-4 uppercase">Reliable Tenant Placement & Mgmt</h4>
                 <p class="text-slate-600 text-base leading-relaxed">We take the overwhelming headache out of renting properties. We conduct thorough, detailed background checks and manage bulletproof rent agreements to ensure your passive income is absolutely secure.</p>
             </div>
 
-            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group">
+            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group mobile-swipe-card whitespace-normal">
                 <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center mb-6 group-hover:bg-[#0D1B2A] group-hover:text-white transition-all"><i class="fas fa-store text-2xl"></i></div>
                 <h4 class="font-bold font-cinzel text-xl text-[#0D1B2A] mb-4 uppercase">Strategic Commercial Spaces</h4>
                 <p class="text-slate-600 text-base leading-relaxed">Whether launching an entirely new retail brand or expanding a corporate office, we pinpoint high-footfall, premium locations that will drive direct business growth and customer visibility for your enterprise.</p>
             </div>
 
-            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group">
+            <div class="bg-white border border-slate-200 p-10 rounded-3xl hover:border-amber-400 hover:shadow-xl transition-all duration-300 group mobile-swipe-card whitespace-normal">
                 <div class="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 text-[#0D1B2A] flex items-center justify-center mb-6 group-hover:bg-[#0D1B2A] group-hover:text-white transition-all"><i class="fas fa-chart-line text-2xl"></i></div>
                 <h4 class="font-bold font-cinzel text-xl text-[#0D1B2A] mb-4 uppercase">Data-Driven Portfolios</h4>
                 <p class="text-slate-600 text-base leading-relaxed">We rigorously analyze local market data, historical trends, and future development layouts to help investors secure high-yield industrial galas and pre-leased assets in fast-growing corridors for maximum ROI.</p>
             </div>
+        </div>
+        
+        <!-- Mobile Tracking Dots for Why Us Grid -->
+        <div class="flex justify-center gap-2 mt-4 md:hidden" id="whyus-dots">
+            <div class="w-4 h-2 rounded-full bg-amber-500 transition-all duration-300"></div>
+            <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+            <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+            <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+        </div>
 
-            <div class="sm:col-span-2 bg-gradient-to-br from-[#0D1B2A] to-slate-900 border border-slate-800 p-10 sm:p-12 rounded-3xl shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row gap-10 items-start sm:items-center mt-6">
-                <div class="w-20 h-20 shrink-0 rounded-full bg-white/10 border border-white/20 text-amber-500 flex items-center justify-center shadow-lg"><i class="fas fa-crown text-3xl"></i></div>
-                <div>
-                    <h4 class="font-bold font-cinzel text-2xl text-white mb-4 uppercase tracking-wide">From First-Time Buyers to Elite Investors</h4>
-                    <p class="text-slate-300 text-lg leading-relaxed max-w-4xl">We gently guide first-time buyers safely into the housing market by securing their home loans and handling all scary legal paperwork. Simultaneously, we assist seasoned, high-net-worth investors secure robust, diverse rental portfolios, creating a meticulously tailored, strategic roadmap for every single client's unique financial goals.</p>
-                </div>
+        <!-- Kept out of mobile swipe to maintain its wide layout importance -->
+        <div class="bg-gradient-to-br from-[#0D1B2A] to-slate-900 border border-slate-800 p-10 sm:p-12 rounded-3xl shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row gap-10 items-start sm:items-center mt-6 w-full mx-4 sm:mx-0">
+            <div class="w-20 h-20 shrink-0 rounded-full bg-white/10 border border-white/20 text-amber-500 flex items-center justify-center shadow-lg"><i class="fas fa-crown text-3xl"></i></div>
+            <div>
+                <h4 class="font-bold font-cinzel text-2xl text-white mb-4 uppercase tracking-wide">From First-Time Buyers to Elite Investors</h4>
+                <p class="text-slate-300 text-lg leading-relaxed max-w-4xl">We gently guide first-time buyers safely into the housing market by securing their home loans and handling all scary legal paperwork. Simultaneously, we assist seasoned, high-net-worth investors secure robust, diverse rental portfolios, creating a meticulously tailored, strategic roadmap for every single client's unique financial goals.</p>
             </div>
         </div>
     </section>
@@ -378,6 +271,7 @@
         </div>
     </section>
 
+    <!-- REVIEWS SECTION: Marquee on Desktop, Swipe+Dots on Mobile -->
     <section class="py-20 bg-slate-50 border-y border-slate-200 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -387,13 +281,157 @@
                 <p class="text-lg text-slate-600 mt-6">Don't just take our word for it. Read the verified experiences of families, business owners, and investors who trusted Jay Keshav Property.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+            <!-- DESKTOP MARQUEE VIEW (Hidden on Mobile) -->
+            <div class="hidden md:block marquee-container mb-6">
+                <div class="marquee-content-left">
+                    <!-- Exact 6 specific reviews -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"We have had a fantastic relationship with Pradeep Jha for the last 9 years, and I cannot recommend him highly enough. He started out helping us find a great place to rent... When we were finally ready to buy our own flat, he guided us through the purchase. Now, he manages our rental property! He is incredibly reliable and handles absolutely everything, including all complex documentation. JKP is our trusted guy in real estate."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg font-cinzel">MS</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Mandeep Singh</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"I recently booked a brand new 3 BHK flat through Jay Keshav Property, and the experience was outstanding. Because they are official channel partners with the builders, they had access to the best premium inventory and got us a highly competitive price. The absolute best part? 0% brokerage! They handled the entire process start-to-finish, making the paperwork completely stress-free."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg font-cinzel">JP</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Jeet Prajapati</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"I have been renting with Pradeep Jha (Jay Keshav Property) for the last 5 years, and he is absolutely wonderful to work with. He is officially our go-to guy for all things rental! What I appreciate most as a customer is how he stepped up to handle all the complex documentation for us. He makes the entire process completely hassle-free from start to finish."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-lg font-cinzel">AS</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Anuj Singh</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"Jay Keshav Property provides genuine end-to-end real estate services. From finding the right property to finalizing the loan and registry documents, they did it all. Very transparent dealing and low commission compared to the market. Highly recommended!"</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-lg font-cinzel">AB</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Arpan Basak</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"I have been associated with Jay Keshav Property for the last 7 years, and they are hands down the best real estate agents in Nalasopara. I am a flat owner, and they have consistently helped me find reliable tenants and manage the entire renting process smoothly without any gaps."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-lg font-cinzel">NR</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Naik Rathnakar</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"I was looking for a good commercial shop on rent to setup my business in Nallasopara, and Jay Keshav Property helped me find the exact space I needed at Nakoda Heights. The location is excellent, and the whole process was incredibly smooth. Everything was transparent and professional."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-lg font-cinzel">KC</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Kiran Choudhary</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicated exact 6 for Desktop Marquee loop -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"We have had a fantastic relationship with Pradeep Jha for the last 9 years, and I cannot recommend him highly enough. He started out helping us find a great place to rent... When we were finally ready to buy our own flat, he guided us through the purchase. Now, he manages our rental property! He is incredibly reliable and handles absolutely everything, including all complex documentation. JKP is our trusted guy in real estate."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg font-cinzel">MS</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Mandeep Singh</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                            </div>
+                            <p class="text-slate-700 italic leading-relaxed mb-8">"I recently booked a brand new 3 BHK flat through Jay Keshav Property, and the experience was outstanding. Because they are official channel partners with the builders, they had access to the best premium inventory and got us a highly competitive price. The absolute best part? 0% brokerage! They handled the entire process start-to-finish, making the paperwork completely stress-free."</p>
+                        </div>
+                        <div class="flex items-center gap-4 border-t border-slate-100 pt-5">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg font-cinzel">JP</div>
+                            <div>
+                                <p class="font-bold text-[#0D1B2A] text-sm uppercase tracking-wider">Jeet Prajapati</p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-3 h-3"> Google Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOBILE SWIPE VIEW (Hidden on Desktop) -->
+            <div id="reviews-swipe" class="md:hidden mobile-swipe-grid hide-scrollbar">
+                <!-- Exact 6 specific reviews without duplicates -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"We have had a fantastic relationship with Pradeep Jha for the last 9 years, and I cannot recommend him highly enough. He started out helping us find a great place to rent... When we were finally ready to buy our own flat, he guided us through the purchase. Now, he manages our rental property! He is incredibly reliable and handles absolutely everything, including all complex documentation. JKP is our trusted guy in real estate."</p>
                     </div>
@@ -406,11 +444,11 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"I recently booked a brand new 3 BHK flat through Jay Keshav Property, and the experience was outstanding. Because they are official channel partners with the builders, they had access to the best premium inventory and got us a highly competitive price. The absolute best part? 0% brokerage! They handled the entire process start-to-finish, making the paperwork completely stress-free."</p>
                     </div>
@@ -423,11 +461,11 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"I have been renting with Pradeep Jha (Jay Keshav Property) for the last 5 years, and he is absolutely wonderful to work with. He is officially our go-to guy for all things rental! What I appreciate most as a customer is how he stepped up to handle all the complex documentation for us. He makes the entire process completely hassle-free from start to finish."</p>
                     </div>
@@ -440,11 +478,11 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"Jay Keshav Property provides genuine end-to-end real estate services. From finding the right property to finalizing the loan and registry documents, they did it all. Very transparent dealing and low commission compared to the market. Highly recommended!"</p>
                     </div>
@@ -457,11 +495,11 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"I have been associated with Jay Keshav Property for the last 7 years, and they are hands down the best real estate agents in Nalasopara. I am a flat owner, and they have consistently helped me find reliable tenants and manage the entire renting process smoothly without any gaps."</p>
                     </div>
@@ -474,11 +512,11 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between relative group">
-                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center text-xl shadow-lg transform group-hover:scale-110 transition-transform"><i class="fas fa-quote-right"></i></div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer mobile-swipe-card whitespace-normal">
                     <div>
-                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
                         <p class="text-slate-700 italic leading-relaxed mb-8">"I was looking for a good commercial shop on rent to setup my business in Nallasopara, and Jay Keshav Property helped me find the exact space I needed at Nakoda Heights. The location is excellent, and the whole process was incredibly smooth. Everything was transparent and professional."</p>
                     </div>
@@ -490,14 +528,253 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            
+
+            <!-- Mobile Tracking Dots for Reviews -->
+            <div class="flex justify-center gap-2 mt-4 md:hidden" id="reviews-dots">
+                <div class="w-4 h-2 rounded-full bg-amber-500 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+                <div class="w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+            </div>
+
             <div class="mt-16 text-center">
                 <a href="index.html#lead-form" class="inline-flex btn-modern-effect px-10 py-4 bg-[#0D1B2A] hover:bg-slate-800 text-white font-bold rounded-xl transition-all shadow-lg text-center uppercase tracking-widest text-sm">
                     Start Your Journey With Us
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- FEEDBACK SECTION -->
+    <section id="feedback" class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-[#0D1B2A] font-cinzel uppercase mb-2">How was your experience with us?</h3>
+            <p class="text-slate-500 mb-8">Click a star to rate your property journey.</p>
+            
+            <div class="flex justify-center gap-2 mb-6 star-rating" id="star-rating-container">
+                <i class="fas fa-star text-slate-200 cursor-pointer text-4xl transition-colors" data-val="1" onclick="handleRating(1)"></i>
+                <i class="fas fa-star text-slate-200 cursor-pointer text-4xl transition-colors" data-val="2" onclick="handleRating(2)"></i>
+                <i class="fas fa-star text-slate-200 cursor-pointer text-4xl transition-colors" data-val="3" onclick="handleRating(3)"></i>
+                <i class="fas fa-star text-slate-200 cursor-pointer text-4xl transition-colors" data-val="4" onclick="handleRating(4)"></i>
+                <i class="fas fa-star text-slate-200 cursor-pointer text-4xl transition-colors" data-val="5" onclick="handleRating(5)"></i>
+            </div>
+
+            <div id="feedback-good" class="hidden animate-fade-in space-y-4 bg-green-50 p-6 rounded-2xl border border-green-100">
+                <h4 class="text-xl font-bold text-green-700 font-cinzel uppercase">Thank you! 🎉</h4>
+                <p class="text-slate-600">We are thrilled you had a great experience. Could you take 10 seconds to share this on Google? It helps our small business immensely.</p>
+                <a href="https://g.page/r/CWe0mpRTfBaHEBE/review" target="_blank" class="inline-block bg-white border border-slate-200 text-slate-800 font-bold py-3 px-6 rounded-xl hover:bg-slate-50 shadow-sm transition-colors mt-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-4 w-4 inline mr-2"> Leave a Review
+                </a>
+            </div>
+
+            <div id="feedback-bad" class="hidden animate-fade-in space-y-4 bg-red-50 p-6 rounded-2xl border border-red-100 text-left">
+                <h4 class="text-lg font-bold text-red-700 text-center font-cinzel uppercase">We're sorry to hear that.</h4>
+                <p class="text-slate-600 text-sm text-center mb-4">Please tell us how we can improve. Your feedback goes directly to management.</p>
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 max-w-lg mx-auto">
+                    <input type="hidden" name="access_key" value="01e2225b-b3eb-4b49-926c-3224615a778f">
+                    <input type="hidden" name="subject" value="⚠️ New Improvement Feedback!">
+                    <textarea name="Complaint" rows="3" required class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none" placeholder="What went wrong?"></textarea>
+                    <input type="tel" name="Phone" placeholder="Phone Number (Optional)" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none">
+                    <button type="submit" class="w-full bg-[#0D1B2A] text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition-colors uppercase tracking-widest text-sm">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FORM -->
+    <section id="contact" class="py-24 bg-[#FDFBF7] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-16">
+            
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <span class="text-amber-600 font-bold tracking-widest text-sm uppercase">Get In Touch</span>
+                    <h2 class="text-3xl font-extrabold tracking-wide text-[#0D1B2A] sm:text-4xl mt-2 font-cinzel uppercase">Visit Our Office</h2>
+                    <p class="text-lg text-slate-600 mt-4">Drop by our branch to discuss market options face-to-face over tea.</p>
+                </div>
+                
+                <div class="space-y-6 font-medium text-slate-700">
+                    <a href="https://maps.app.goo.gl/kGQ6NGgeZRLrivS79" target="_blank" class="flex gap-4 items-start group cursor-pointer">
+                        <div class="w-12 h-12 rounded-full bg-white text-amber-600 border border-slate-200 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                        <span class="mt-2 text-slate-600 leading-relaxed group-hover:text-amber-600 transition-colors">C/09, Nakoda Heights, Building No 2, Near Tata Mall, 100feet Vasai Virar Link Road, Nalasopara West, Palghar-401203, Maharashtra</span>
+                    </a>
+                    <div class="flex gap-4 items-center group cursor-pointer">
+                        <div class="w-12 h-12 rounded-full bg-white text-amber-600 border border-slate-200 shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0D1B2A] group-hover:text-white transition-colors"><i class="fas fa-phone-alt text-lg"></i></div>
+                        <a href="tel:+919702131867" class="text-lg text-slate-600 hover:text-amber-600 font-bold transition-colors">9702131867</a>
+                    </div>
+                    <div class="flex gap-4 items-center group cursor-pointer">
+                        <div class="w-12 h-12 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366] group-hover:text-white transition-colors"><i class="fab fa-whatsapp text-xl"></i></div>
+                        <a href="https://wa.me/919607731867" target="_blank" class="text-lg text-slate-600 hover:text-[#25D366] font-bold transition-colors">9607731867</a>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-slate-200 flex gap-4 flex-wrap">
+                        <a href="https://www.instagram.com/jaykeshavproperty/" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white hover:border-pink-600 transition-all shadow-sm"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://www.linkedin.com/company/105824176/" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-[#0077b5] flex items-center justify-center hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all shadow-sm"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="https://www.facebook.com/jkpestates/" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-[#1877f2] flex items-center justify-center hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] transition-all shadow-sm"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="https://www.youtube.com/@JayKeshavProperty" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-red-600 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all shadow-sm"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-3xl overflow-hidden shadow-lg h-72 border border-slate-200 bg-white p-1">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Jay+Keshav+Property,+Nalasopara+West&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; border-radius: 1.25rem;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div id="lead-form" class="lg:col-span-7 relative scroll-mt-24">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 rounded-[2.5rem] transform rotate-2 scale-105 opacity-15"></div>
+                <div class="bg-white p-8 sm:p-12 rounded-[2.5rem] border border-slate-200 shadow-2xl relative z-10">
+                    
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-extrabold text-[#0D1B2A] font-cinzel uppercase tracking-wide">Tell Us What You Need</h3>
+                        <p class="text-slate-500 mt-2">Fill out the details below and our experts will handpick the best properties for you.</p>
+                    </div>
+
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6" id="property-form">
+                        <input type="hidden" name="access_key" value="01e2225b-b3eb-4b49-926c-3224615a778f">
+                        <input type="hidden" name="subject" value="🔥 New Qualified Property Lead from Website!">
+                        <input type="hidden" name="from_name" value="Jay Keshav Website">
+                    
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Your Name *</label>
+                                <input type="text" name="Name" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-900 placeholder-slate-400 font-medium" placeholder="Rahul Sharma">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Phone Number *</label>
+                                <input type="tel" name="Phone" required minlength="10" maxlength="12" pattern="[0-9]{10,12}" title="Please enter a valid 10 to 12 digit mobile number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-900 placeholder-slate-400 font-medium" placeholder="9876543210">
+                            </div>
+                        </div>
+                    
+                        <div class="grid sm:grid-cols-2 gap-5 pt-2">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Property Type *</label>
+                                <select name="Property_Type" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-700 font-medium cursor-pointer">
+                                    <option value="" disabled selected>Select Property Type</option>
+                                    <option value="Flat">Flat / Apartment</option>
+                                    <option value="Bungalow">Bungalow / Villa</option>
+                                    <option value="Commercial Shop">Commercial Shop</option>
+                                    <option value="Industrial">Industrial Space</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Configuration *</label>
+                                <select name="BHK_Preference" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-700 font-medium cursor-pointer">
+                                    <option value="" disabled selected>Select Configuration</option>
+                                    <option value="1 BHK">1 BHK</option>
+                                    <option value="2 BHK">2 BHK</option>
+                                    <option value="3 BHK">3 BHK</option>
+                                    <option value="4+ BHK">4+ BHK</option>
+                                    <option value="Commercial (N/A)">Commercial (N/A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="grid sm:grid-cols-2 gap-5 pt-2">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 ml-1">Primary Purpose *</label>
+                                <div class="flex gap-4">
+                                    <label class="flex-1 flex items-center justify-center gap-3 p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-colors group">
+                                        <input type="radio" name="Buying_Purpose" value="Self-Use" required class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none">
+                                        <span class="text-sm font-bold text-slate-700 group-hover:text-amber-700">Self-Use</span>
+                                    </label>
+                                    <label class="flex-1 flex items-center justify-center gap-3 p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-colors group">
+                                        <input type="radio" name="Buying_Purpose" value="Investment" required class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none">
+                                        <span class="text-sm font-bold text-slate-700 group-hover:text-amber-700">Investment</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1 mt-2 sm:mt-0">Expected Timeline *</label>
+                                <select name="Timeline" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-700 font-medium cursor-pointer mt-2 sm:mt-1">
+                                    <option value="" disabled selected>Select Timeline</option>
+                                    <option value="Immediately (Ready to move)">Immediately (Ready to move)</option>
+                                    <option value="Within 1 to 3 Months">Within 1 to 3 Months</option>
+                                    <option value="Within 3 to 6 Months">Within 3 to 6 Months</option>
+                                    <option value="Just Surfing / Exploring">Just Surfing / Exploring</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5 pt-2 border-t border-slate-100 mt-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Preferred Day to Talk *</label>
+                                <select name="Preferred_Day" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-700 font-medium cursor-pointer">
+                                    <option value="" disabled selected>Select Day</option>
+                                    <option value="Any Day">Any Day is fine</option>
+                                    <option value="Weekdays (Mon-Fri)">Weekdays (Mon-Fri)</option>
+                                    <option value="Weekends (Sat-Sun)">Weekends (Sat-Sun)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Best Time to Call *</label>
+                                <select name="Preferred_Time" required class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-700 font-medium cursor-pointer">
+                                    <option value="" disabled selected>Select Time</option>
+                                    <option value="Keep Blank / Urgent">Anytime</option>
+                                    <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                                    <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                                    <option value="Evening (4 PM - 8 PM)">Evening (4 PM - 8 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="bg-[#FDFBF7] p-6 rounded-2xl border border-slate-200 mt-2 shadow-sm">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Must-Have Features (Select all that apply)</label>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" name="Feature_Sunlight" value="Yes" class="w-5 h-5 rounded text-amber-500 border-slate-300 focus:ring-amber-500 cursor-pointer outline-none">
+                                    <span class="text-sm font-medium text-slate-700 group-hover:text-amber-600 transition-colors">Good Ventilation</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" name="Feature_Schools_Hospitals" value="Yes" class="w-5 h-5 rounded text-amber-500 border-slate-300 focus:ring-amber-500 cursor-pointer outline-none">
+                                    <span class="text-sm font-medium text-slate-700 group-hover:text-amber-600 transition-colors">Near Schools/Hospitals</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" name="Feature_Market_Malls" value="Yes" class="w-5 h-5 rounded text-amber-500 border-slate-300 focus:ring-amber-500 cursor-pointer outline-none">
+                                    <span class="text-sm font-medium text-slate-700 group-hover:text-amber-600 transition-colors">Near Market/Malls</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" name="Feature_Station" value="Yes" class="w-5 h-5 rounded text-amber-500 border-slate-300 focus:ring-amber-500 cursor-pointer outline-none">
+                                    <span class="text-sm font-medium text-slate-700 group-hover:text-amber-600 transition-colors">Close to Station</span>
+                                </label>
+                            </div>
+                        </div>
+                    
+                        <div class="pt-2">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Any Specific Budget or Locations?</label>
+                            <textarea name="Details" rows="3" class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-shadow text-slate-900 placeholder-slate-400 font-medium resize-none" placeholder="e.g., Looking under 40 Lakhs near Nalasopara West..."></textarea>
+                        </div>
+                    
+                        <button type="submit" class="w-full py-5 mt-4 bg-[#0D1B2A] hover:bg-slate-800 text-white font-extrabold text-sm tracking-widest uppercase rounded-2xl transition-all shadow-xl hover:-translate-y-1">
+                            Get Best Property Matches <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP SECTION -->
+    <section id="vip" class="py-16 bg-[#0D1B2A] text-white text-center px-4 relative overflow-hidden border-t border-amber-600/30">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <i class="fas fa-gem text-amber-500 text-3xl mb-4"></i>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-wide text-white uppercase font-cinzel mb-4">Join The Secret Investor List</h2>
+            <p class="text-slate-300 mb-8 max-w-2xl mx-auto">Get notified about distress sales, pre-launch discounts, and high-yield commercial spaces before they hit the open market. No spam, only serious deals.</p>
+            <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+                <input type="hidden" name="access_key" value="01e2225b-b3eb-4b49-926c-3224615a778f">
+                <input type="hidden" name="subject" value="💎 New VIP Investor Join!">
+                <input type="tel" name="WhatsApp" required minlength="10" maxlength="10" pattern="[0-9]{10}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="10-digit WhatsApp Number" title="Please enter exactly 10 digits" class="px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 w-full sm:w-auto flex-1">
+                <button type="submit" class="px-8 py-4 rounded-xl bg-amber-500 text-slate-900 font-bold hover:bg-amber-400 transition-colors shadow-lg uppercase tracking-widest text-xs whitespace-nowrap">Send Me Deals</button>
+            </form>
         </div>
     </section>
 
@@ -521,6 +798,98 @@
                 icon.classList.replace('fa-times', 'fa-bars'); icon.classList.remove('text-amber-500');
             }
         }
+
+        const form = document.getElementById('property-form');
+        form.addEventListener('invalid', function (e) {
+            e.preventDefault(); 
+            e.target.classList.remove('border-slate-200', 'bg-slate-50');
+            e.target.classList.add('border-red-500', 'ring-1', 'ring-red-500', 'bg-red-50');
+            
+            if(e.target.type === 'radio') {
+                e.target.closest('.flex').parentElement.classList.add('radio-group-error');
+            }
+
+            const firstInvalid = form.querySelector(':invalid');
+            if (firstInvalid) {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, true);
+
+        form.addEventListener('input', function (e) {
+            e.target.classList.remove('border-red-500', 'ring-1', 'ring-red-500', 'bg-red-50');
+            e.target.classList.add('border-slate-200', 'bg-slate-50');
+            
+            if(e.target.type === 'radio') {
+                e.target.closest('.flex').parentElement.classList.remove('radio-group-error');
+            }
+        });
+
+        function handleRating(rating) {
+            const container = document.getElementById('star-rating-container');
+            const stars = container.getElementsByTagName('i');
+            const goodDiv = document.getElementById('feedback-good');
+            const badDiv = document.getElementById('feedback-bad');
+
+            for(let i=0; i<stars.length; i++) {
+                if(i < rating) {
+                    stars[i].classList.replace('text-slate-200', 'text-amber-400');
+                    stars[i].classList.add('active');
+                } else {
+                    stars[i].classList.replace('text-amber-400', 'text-slate-200');
+                    stars[i].classList.remove('active');
+                }
+            }
+
+            if(rating >= 4) {
+                goodDiv.classList.remove('hidden');
+                badDiv.classList.add('hidden');
+            } else {
+                badDiv.classList.remove('hidden');
+                goodDiv.classList.add('hidden');
+            }
+        }
+
+        // FIXED: Single active dot tracking logic
+        function setupSwipeDots(containerId, dotsContainerId) {
+            const container = document.getElementById(containerId);
+            const dotsContainer = document.getElementById(dotsContainerId);
+            if(!container || !dotsContainer) return;
+            
+            const dots = dotsContainer.children;
+            // Only count actual swipe cards (ignoring the duplicated items on desktop)
+            const cards = Array.from(container.children).filter(c => c.classList.contains('mobile-swipe-card'));
+            
+            container.addEventListener('scroll', () => {
+                const containerCenter = container.scrollLeft + (container.clientWidth / 2);
+                let activeIndex = 0;
+                let minDistance = Infinity;
+
+                cards.forEach((card, index) => {
+                    if (index >= dots.length) return; // safeguard
+                    const cardCenter = card.offsetLeft + (card.offsetWidth / 2) - container.offsetLeft;
+                    const distance = Math.abs(containerCenter - cardCenter);
+                    
+                    if(distance < minDistance) {
+                        minDistance = distance;
+                        activeIndex = index;
+                    }
+                });
+
+                // Force ONLY ONE dot to be active using direct className replacement
+                Array.from(dots).forEach((dot, index) => {
+                    if(index === activeIndex) {
+                        dot.className = 'w-4 h-2 rounded-full bg-amber-500 transition-all duration-300';
+                    } else {
+                        dot.className = 'w-2 h-2 rounded-full bg-slate-300 transition-all duration-300';
+                    }
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setupSwipeDots('whyus-swipe', 'whyus-dots');
+            setupSwipeDots('reviews-swipe', 'reviews-dots');
+        });
     </script>
 </body>
 </html>
