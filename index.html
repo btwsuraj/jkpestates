@@ -12,6 +12,7 @@
     <meta name="theme-color" content="#0D1B2A">
     
     <link rel="icon" href="BrandLogo.png" type="image/jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="canonical" href="https://www.jkpestates.com/">
 
     <meta property="og:title" content="Jay Keshav Property | Rera Registered Real Estate Consultant & Investment Advisor">
@@ -165,7 +166,7 @@
     }
   ]
 }
-</script>
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,17 +190,6 @@
     </script>
    
     <style>
-        /* Custom Hero Animations */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob { animation: blob 15s infinite alternate; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-
         @keyframes slide-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes slide-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
@@ -209,12 +199,35 @@
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
+        
+        /* SLOW CLASSES FOR REVIEWS */
         .marquee-content-left { display: flex; animation: slide-left 50s linear infinite; min-width: max-content; }
         .marquee-content-right { display: flex; animation: slide-right 40s linear infinite; min-width: max-content; }
-        .marquee-container:hover .marquee-content-left, .marquee-container:hover .marquee-content-right { animation-play-state: paused; }
         
-        .review-card { width: 360px; white-space: normal; margin-right: 24px; flex-shrink: 0; }
+        /* FAST CLASSES FOR PARTNERS (15s and 12s) */
+        .marquee-partners-left { display: flex; animation: slide-left 15s linear infinite; min-width: max-content; }
+        .marquee-partners-right { display: flex; animation: slide-right 12s linear infinite; min-width: max-content; }
         
+        /* Keep Hover/Pause functionality working across all classes */
+        .marquee-container:hover .marquee-content-left, 
+        .marquee-container:hover .marquee-content-right,
+        .marquee-container:hover .marquee-partners-left,
+        .marquee-container:hover .marquee-partners-right,
+        .marquee-container.paused .marquee-content-left,
+        .marquee-container.paused .marquee-content-right { 
+            animation-play-state: paused !important; 
+        }
+        
+        /* FIXED HEIGHT APPLIED HERE FOR EQUAL CAROUSEL SHAPES */
+        .review-card { width: 360px; height: 320px; white-space: normal; margin-right: 24px; flex-shrink: 0; }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .partner-card {
             width: 200px; height: 120px; margin-right: 24px; flex-shrink: 0; 
             display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
@@ -248,7 +261,8 @@
                 <a href="#home" class="text-amber-600 transition-colors">HOME</a>
                 <a href="services.html" class="hover:text-amber-600 transition-colors">SERVICES</a>
                 <a href="why-us.html" class="hover:text-amber-600 transition-colors">WHY US</a>
-                <a href="#reviews" class="hover:text-amber-600 transition-colors">REVIEWS</a>
+                <!-- Updated to redirect to review page -->
+                <a href="reviews.html" class="hover:text-amber-600 transition-colors">REVIEWS</a>
                 <a href="#contact" class="hover:text-amber-600 transition-colors">CONTACT</a>
             </nav>
             
@@ -276,60 +290,48 @@
             <a href="#home" onclick="toggleMobileMenu()" class="block px-6 py-4 text-sm font-bold text-amber-600 hover:bg-slate-50 border-b border-slate-100 transition-colors">HOME</a>
             <a href="services.html" class="block px-6 py-4 text-sm font-bold text-slate-700 hover:text-amber-600 hover:bg-slate-50 border-b border-slate-100 transition-colors">SERVICES</a>
             <a href="why-us.html" class="block px-6 py-4 text-sm font-bold text-slate-700 hover:text-amber-600 hover:bg-slate-50 border-b border-slate-100 transition-colors">WHY US</a>
-            <a href="#reviews" onclick="toggleMobileMenu()" class="block px-6 py-4 text-sm font-bold text-slate-700 hover:text-amber-600 hover:bg-slate-50 border-b border-slate-100 transition-colors">REVIEWS</a>
+            <!-- Updated to redirect to review page -->
+            <a href="reviews.html" class="block px-6 py-4 text-sm font-bold text-slate-700 hover:text-amber-600 hover:bg-slate-50 border-b border-slate-100 transition-colors">REVIEWS</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block px-6 py-4 text-sm font-bold text-slate-700 hover:text-amber-600 hover:bg-slate-50 transition-colors">CONTACT</a>
         </div>
     </header>
 
-   <!-- HERO SECTION (MATCHING THE NEW DESIGN) -->
+   <!-- HERO SECTION -->
     <section id="home" class="relative bg-[#0D1B2A] pt-28 lg:pt-36 pb-24 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
         
-        <!-- Full Width Background Image & Gradient Blend -->
         <div class="absolute top-0 left-0 w-full h-full z-0">
-            <!-- Blurry cityscape image -->
-            <!-- <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Vasai Virar Cityscape" class="w-full h-full object-cover object-right blur-[3px] scale-105 opacity-80"> -->
             <img src="banner.png" alt="Vasai Virar Cityscape" class="w-full h-full object-cover object-right blur-[3px] scale-105 opacity-80">            
-            <!-- Magic Blend: Solid dark blue on left, fading to transparent on right -->
             <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0D1B2A] via-[#0D1B2A]/95 md:via-[#0D1B2A]/80 to-[#0D1B2A]/10"></div>
         </div>
 
-        <!-- Main Content Container -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col lg:flex-row justify-between items-center lg:items-end gap-12 lg:gap-0">
             
-            <!-- Left Side: Text, Stats, and Buttons -->
             <div class="w-full lg:w-[65%] space-y-6 lg:space-y-8 text-center lg:text-left">
                 
-                <!-- Subtitle Label -->
                 <div class="flex items-center justify-center lg:justify-start gap-3 text-amber-500 font-bold uppercase tracking-widest text-[10px] sm:text-xs">
                     <div class="hidden sm:block w-8 h-[2px] bg-amber-500"></div>
                     Real Estate Consultant & Advisor
                     <div class="hidden sm:block w-8 h-[2px] bg-amber-500 lg:hidden"></div>
                 </div>
                 
-                <!-- Main Heading -->
                 <h1 class="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold uppercase tracking-wide font-cinzel leading-tight sm:leading-[1.1] text-white drop-shadow-md">
                     Jay Keshav <br class="hidden sm:block">
                     <span class="text-[#EBB54A]">Property</span>
                 </h1>
 
-                <!-- Subheading -->
                 <p class="text-base sm:text-lg lg:text-xl text-slate-200 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
                     Your Trusted Partner in Finding the Perfect Property across <br class="hidden lg:block"> 
                     <span class="text-[#EBB54A] font-medium">Mira-Bhayandar | Vasai & Virar</span>
                 </p>
 
-                <!-- Stats Row (PERFECT MOBILE ALIGNMENT) -->
                 <div id="stats-section" class="grid grid-cols-2 md:flex md:flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-y-8 gap-x-4 sm:gap-x-8 py-6 lg:py-2 max-w-[320px] mx-auto md:max-w-none">
-                    
                     <div class="flex items-center justify-start gap-3 sm:gap-4">
-                        <!-- Added sm:w-10 to give the larger desktop icon room to breathe -->
                         <i class="fas fa-medal text-[#EBB54A] text-3xl sm:text-4xl w-8 sm:w-10 text-center shrink-0"></i>
                         <div class="flex flex-col text-left">
                             <span class="text-white font-bold text-xl sm:text-2xl leading-none"><span class="stat-counter" data-target="13">13</span>+</span>
                             <span class="text-slate-400 text-[9px] sm:text-[10px] uppercase tracking-wider mt-1 font-bold">Years Experience</span>
                         </div>
                     </div>
-                    
                     <div class="flex items-center justify-start gap-3 sm:gap-4">
                         <i class="fas fa-users text-[#EBB54A] text-3xl sm:text-4xl w-8 sm:w-10 text-center shrink-0"></i>
                         <div class="flex flex-col text-left">
@@ -337,7 +339,6 @@
                             <span class="text-slate-400 text-[9px] sm:text-[10px] uppercase tracking-wider mt-1 font-bold">Happy Families</span>
                         </div>
                     </div>
-                    
                     <div class="flex items-center justify-start gap-3 sm:gap-4">
                         <i class="fas fa-star text-[#EBB54A] text-3xl sm:text-4xl w-8 sm:w-10 text-center shrink-0"></i>
                         <div class="flex flex-col text-left">
@@ -345,7 +346,6 @@
                             <span class="text-slate-400 text-[9px] sm:text-[10px] uppercase tracking-wider mt-1 font-bold">Customer Rating</span>
                         </div>
                     </div>
-                    
                     <div class="flex items-center justify-start gap-3 sm:gap-4">
                         <i class="fas fa-handshake text-[#EBB54A] text-3xl sm:text-4xl w-8 sm:w-10 text-center shrink-0"></i>
                         <div class="flex flex-col text-left">
@@ -355,7 +355,6 @@
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start pt-2">
                     <a href="#contact" class="flex items-center justify-center gap-2 px-6 py-4 sm:py-3.5 bg-[#EBB54A] text-[#0D1B2A] font-bold rounded-lg hover:bg-amber-400 transition-all text-sm transition-transform hover:-translate-y-0.5">
                         <i class="fas fa-home"></i> Get Expert Guidance
@@ -368,7 +367,6 @@
                     </a>
                 </div>
 
-                <!-- Trust Badges Row -->
                 <div class="flex flex-row justify-center lg:justify-start items-center gap-6 sm:gap-10 pt-6 sm:pt-8 border-t border-white/10 w-full lg:max-w-3xl mx-auto lg:mx-0">
                     <a href="why-us.html#rera-section" class="flex items-center gap-2 sm:gap-3 group">
                         <img src="maharera-logo.png" alt="MahaRERA" class="h-10 sm:h-12 w-10 sm:w-12 object-contain bg-white rounded-full p-1.5 sm:p-2 border border-white/20 shrink-0"> 
@@ -390,12 +388,10 @@
         </div>
     </section>
 
-    <!-- BOTTOM FEATURES BAR (NO ANTS! Strict Mobile Grid) -->
+    <!-- BOTTOM FEATURES BAR -->
     <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-12 mb-12">
         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
-            <!-- Strict Grid: 2 columns on mobile, 3 on tablet, 6 on desktop -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-100">
-                
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-2 sm:pt-0">
                     <i class="fas fa-building-columns text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -403,7 +399,6 @@
                         <span class="text-slate-500 text-[10px]">Assistance</span>
                     </div>
                 </div>
-                
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-2 sm:pt-0">
                     <i class="fas fa-user-tie text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -411,7 +406,6 @@
                         <span class="text-slate-500 text-[10px]">Consultancy</span>
                     </div>
                 </div>
-
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-4 sm:pt-0 border-t border-slate-100 sm:border-0">
                     <i class="fas fa-clipboard-check text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -419,7 +413,6 @@
                         <span class="text-slate-500 text-[10px]">Properties</span>
                     </div>
                 </div>
-
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-4 sm:pt-0 border-t border-slate-100 sm:border-0">
                     <i class="fas fa-handshake text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -427,7 +420,6 @@
                         <span class="text-slate-500 text-[10px]">Brokerage</span>
                     </div>
                 </div>
-
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-4 sm:pt-0 border-t border-slate-100 sm:border-0">
                     <i class="fas fa-headset text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -435,7 +427,6 @@
                         <span class="text-slate-500 text-[10px]">Support</span>
                     </div>
                 </div>
-
                 <div class="flex items-center justify-start sm:justify-center gap-3 px-2 pt-4 sm:pt-0 border-t border-slate-100 sm:border-0">
                     <i class="fas fa-award text-2xl text-amber-500 opacity-80 shrink-0"></i>
                     <div class="flex flex-col text-left">
@@ -443,7 +434,6 @@
                         <span class="text-slate-500 text-[10px]">Partner</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -468,7 +458,7 @@
         </div>
     </section>
 
-    <!-- RE-ORDERED: OFFICIAL CHANNEL PARTNERS & BANKING PARTNERS -->
+    <!-- OFFICIAL CHANNEL PARTNERS & BANKING PARTNERS -->
     <section class="py-20 bg-[#FDFBF7] border-y border-slate-200 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
             <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">Authorized & Trusted By</span>
@@ -476,103 +466,14 @@
             <p class="text-slate-600 mt-4 max-w-2xl mx-auto">We are officially verified channel partners for top real estate developers and hold direct associations with India's leading banks for fast, hassle-free processing.</p>
         </div>
 
-        <!-- Track 1: Builder Partners (MOVED TO TOP) -->
+        <!-- Track 1: Builder Partners -->
         <div class="mb-4 text-center">
             <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">Official Developer Partners</h3>
         </div>
         <div class="marquee-container mb-12">
-            <div class="marquee-content-left">
+            <!-- UPDATED TO marquee-partners-left -->
+            <div class="marquee-partners-left">
                 <!-- SET 1 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
-                </a>
-
-                <!-- SET 2 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
-                </a>
-
-                <!-- SET 3 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Tania-Group.png" alt="Tania Group" title="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" title="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="DGS-Group.png" alt="DGS Group" title="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" title="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Radheya-Construction.png" alt="Radheya Construction" title="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Sunteck.png" alt="Sunteck" title="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
-                </a>
-
-                <!-- SET 4 -->
                 <a href="services.html" class="partner-card group">
                     <img src="JSB-Group.png" alt="JSB Group" title="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
@@ -602,14 +503,47 @@
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
                 </a>
             </div>
+            <!-- ARIA HIDDEN DUPLICATE FOR SEAMLESS SCROLL -->
+            <!-- UPDATED TO marquee-partners-left -->
+            <div class="marquee-partners-left" aria-hidden="true">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="JSB-Group.png" alt="JSB Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">JSB Group</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Tania-Group.png" alt="Tania Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Tania Group</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Suraksha-Smart-City.png" alt="Suraksha Smart City" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Suraksha Smart City</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="DGS-Group.png" alt="DGS Group" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">DGS Group</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Shapoorji-Pallonji.png" alt="Shapoorji Pallonji" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Shapoorji Pallonji</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Radheya-Construction.png" alt="Radheya Construction" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Radheya Construction</span>
+                </a>
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Sunteck.png" alt="Sunteck" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-amber-600 transition-colors w-full text-center">Sunteck</span>
+                </a>
+            </div>
         </div>
 
-        <!-- Track 2: Banking Partners (MOVED TO BOTTOM) -->
+        <!-- Track 2: Banking Partners -->
         <div class="mb-6 mt-8 text-center">
             <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Banking Associates</h3>
         </div>
         <div class="marquee-container">
-            <div class="marquee-content-right">
+            <!-- UPDATED TO marquee-partners-right -->
+            <div class="marquee-partners-right">
                 <!-- SET 1 -->
                 <a href="services.html" class="partner-card group">
                     <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
@@ -643,72 +577,40 @@
                     <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
                 </a>
-
-                <!-- SET 2 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+            </div>
+            <!-- ARIA HIDDEN DUPLICATE FOR SEAMLESS SCROLL -->
+            <!-- UPDATED TO marquee-partners-right -->
+            <div class="marquee-partners-right" aria-hidden="true">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Aavas.jpg" alt="Aavas" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Aditya Birla.png" alt="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Bajaj.jpeg" alt="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="LIC HCFL.jpeg" alt="LIC" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Mahindra Finance.jpg" alt="Mahindra" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Muthoot Finance.jpeg" alt="Muthoot" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
                 </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
-                </a>
-
-                <!-- SET 3 -->
-                <a href="services.html" class="partner-card group">
-                    <img src="Aavas.jpg" alt="Aavas" title="Aavas Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aavas Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Aditya Birla.png" alt="Aditya Birla" title="Aditya Birla" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Aditya Birla Capital</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Bajaj.jpeg" alt="Bajaj Finance" title="Bajaj Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Bajaj Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="HDFC Bank.jpeg" alt="HDFC Bank" title="HDFC Bank" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">HDFC Bank</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="LIC HCFL.jpeg" alt="LIC" title="LIC Housing" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">LIC Housing Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Mahindra Finance.jpg" alt="Mahindra" title="Mahindra Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Mahindra Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Muthoot Finance.jpeg" alt="Muthoot" title="Muthoot Finance" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Muthoot Finance</span>
-                </a>
-                <a href="services.html" class="partner-card group">
-                    <img src="Motilal Oswal.jpeg" alt="Motilal" title="Motilal Oswal Financial Services" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
+                <a href="services.html" class="partner-card group" tabindex="-1">
+                    <img src="Motilal Oswal.jpeg" alt="Motilal" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mt-3 group-hover:text-[#0D1B2A] transition-colors w-full text-center">Motilal Oswal Fin Serv</span>
                 </a>
             </div>
@@ -763,7 +665,7 @@
         </div>
     </section>
 
-    <!-- REVIEWS -->
+    <!-- UPDATED REVIEWS SECTION -->
     <section id="reviews" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#FDFBF7] border-b border-slate-200">
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">Success Stories</span>
@@ -771,242 +673,799 @@
             <p class="text-lg text-slate-600">See what families and business owners are saying about our real estate services on Google.</p>
         </div>
         
+        <!-- ROW 1 (Reviews 1 to 13) -->
         <div class="marquee-container mb-6">
             <div class="marquee-content-left">
                 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"One thing about JAY KESHAV PROPERTY is that they give you complete guidance to buy the property, specially if you are planning to buy in Nalasopara(W) this would be the best place to make a deal"</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Excellent service from start to finish. They understand the Nalasopara West real estate market perfectly and helped us finalize a spacious 2BHK apartment. They handled all the paperwork and local legalities very professionally. They are definitely the go-to team for anyone looking to invest in property around this region"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">DC</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Durgesh Choudhary</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Excellent experience of buying home very helpful nature ."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">NJ</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Nitesh Jha</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Very smooth process for rental flats. Jay Keshav Property has the best options for 2 BHK flats for rent in Nalasopara East and West."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">NS</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Nakul Solanki</p></div>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"They don't just show you houses; they help with the entire home loan process. Got my loan approved easily through their banking contacts."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">AH</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Ankush Handa</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Very transparent dealing. Highly recommend Jay Keshav Property for anyone looking to invest in Vasai-Virar real estate"</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">SK</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Sankhanila Kuiti</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Jay Keshav Property provides genuine end-to-end real estate services. From finding the right property to finalizing the loan and registry documents, they did it all. Highly recommended!"</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">AB</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Arpan Basak</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sahil Kalal</p></div>
                     </div>
                 </div>
 
-                <!-- Mirror Set 1 -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"One thing about JAY KESHAV PROPERTY is that they give you complete guidance to buy the property, specially if you are planning to buy in Nalasopara(W) this would be the best place to make a deal"</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best property dealer in Nalasopara for real estate investments. They suggested an under-construction 1 BHK with excellent future ROI, excellent services. The entire property search process was so smooth and hassle-free"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">DC</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Durgesh Choudhary</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">RC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Raj Choudhary</p></div>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Excellent experience of buying home very helpful nature ."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Jay Keshav Property is a genuine property consultant. They gave me a clear, realistic picture of project completion timelines and future market rates. Very happy!!"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">NJ</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Nitesh Jha</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">TD</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Tushar Das</p></div>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Very smooth process for rental flats. Jay Keshav Property has the best options for 2 BHK flats for rent in Nalasopara East and West."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Very smooth process for rental flats. Jay Keshav Property has the best options for 2 BHK flats for rent in Nalasopara East and West."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">NS</div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">NS</div>
                         <div><p class="font-bold text-slate-900 text-sm">Nakul Solanki</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Truly the best real estate agent, they're very transparent dealing on new project bookings. They handle all booking documentation and builder follow-ups seamlessly."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">AP</div>
+                        <div><p class="font-bold text-slate-900 text-sm">aditya pund</p></div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best property dealer in Nalasopara West! Helped me find a budget-friendly 2 BHK flat near the station. Excellent service."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">SM</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sneha mandwiya</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best experience with Jay Keshav Property. They showed me 5 good options in each region across Mira Bhayandar and Vasai Virar for 1 and 2 BHK flats matching my budget."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">HN</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Hatkar Neha Ramesh</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Bought my first 2 BHK flat in Nalasopara West through Jay Keshav Property. Excellent guidance and fully transparent deal."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">SV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Shubham Varma</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best real estate agent for property investment in Vasai-Virar. They helped me choose a project with maximum capital appreciation potential."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">RS</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Rakesh singh</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best real estate agent in Nalasopara. They handle all rent agreement paperwork quickly and without any hassle"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">DB</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Deepak Bhar</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"This is one of the best property dealing shop in the vasai - virar locality, it provides good knowledge about the property to the client so they can understand the property details in depth before visiting the site. They are were friendly and supporting for the client"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">RG</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Raj Gaidhani</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Great experience investing in a new launch project through them. They helped me get the best builder-floor pre-launch pricing."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">RM</div>
+                        <div><p class="font-bold text-slate-900 text-sm">raghunathsingh mannu</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"I have great experience with them and they are operating properly and they explain me clearly about properties with details, they have best properties and with low-affordable brokerage, and much more, my family is satisfied with buying property by through, there's nothing any illegal issues everything is fine and trust able, they will show u what kind of property you want even land too."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">YJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Yash Jadhav</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARIA HIDDEN DUPLICATE (Search Engines Ignore this to avoid SEO penalty!) -->
+            <div class="marquee-content-left" aria-hidden="true">
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Excellent service from start to finish. They understand the Nalasopara West real estate market perfectly and helped us finalize a spacious 2BHK apartment. They handled all the paperwork and local legalities very professionally. They are definitely the go-to team for anyone looking to invest in property around this region"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sahil Kalal</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best property dealer in Nalasopara for real estate investments. They suggested an under-construction 1 BHK with excellent future ROI, excellent services. The entire property search process was so smooth and hassle-free"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">RC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Raj Choudhary</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Jay Keshav Property is a genuine property consultant. They gave me a clear, realistic picture of project completion timelines and future market rates. Very happy!!"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">TD</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Tushar Das</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Very smooth process for rental flats. Jay Keshav Property has the best options for 2 BHK flats for rent in Nalasopara East and West."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">NS</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Nakul Solanki</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Truly the best real estate agent, they're very transparent dealing on new project bookings. They handle all booking documentation and builder follow-ups seamlessly."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">AP</div>
+                        <div><p class="font-bold text-slate-900 text-sm">aditya pund</p></div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best property dealer in Nalasopara West! Helped me find a budget-friendly 2 BHK flat near the station. Excellent service."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">SM</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sneha mandwiya</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best experience with Jay Keshav Property. They showed me 5 good options in each region across Mira Bhayandar and Vasai Virar for 1 and 2 BHK flats matching my budget."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">HN</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Hatkar Neha Ramesh</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Bought my first 2 BHK flat in Nalasopara West through Jay Keshav Property. Excellent guidance and fully transparent deal."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">SV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Shubham Varma</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best real estate agent for property investment in Vasai-Virar. They helped me choose a project with maximum capital appreciation potential."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">RS</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Rakesh singh</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Best real estate agent in Nalasopara. They handle all rent agreement paperwork quickly and without any hassle"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">DB</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Deepak Bhar</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"This is one of the best property dealing shop in the vasai - virar locality, it provides good knowledge about the property to the client so they can understand the property details in depth before visiting the site. They are were friendly and supporting for the client"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">RG</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Raj Gaidhani</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Great experience investing in a new launch project through them. They helped me get the best builder-floor pre-launch pricing."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">RM</div>
+                        <div><p class="font-bold text-slate-900 text-sm">raghunathsingh mannu</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"I have great experience with them and they are operating properly and they explain me clearly about properties with details, they have best properties and with low-affordable brokerage, and much more, my family is satisfied with buying property by through, there's nothing any illegal issues everything is fine and trust able, they will show u what kind of property you want even land too."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">YJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Yash Jadhav</p></div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- ROW 2 (Reviews 14 to 26) -->
         <div class="marquee-container">
             <div class="marquee-content-right">
                 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Best property dealer near me for buying flats. Clear titles and verified properties only."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Jay Keshav Property is the most trusted name for rentals in Nalasopara. Safe and transparent dealing."</p>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">CS</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Chirag Shetty</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Best property dealer in Nalasopara for real estate investments. They suggested an under-construction 1 BHK with excellent future ROI, excellent services."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">RC</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Raj Choudhary</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Bought my first 2 BHK flat in Nalasopara West through Jay Keshav Property. Excellent guidance and fully transparent deal."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">SV</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Shubham Varma</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"I recently booked a brand new 3 BHK flat through Jay Keshav Property, and the experience was outstanding. They handled the entire process start-to-finish."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">JP</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Jeet Prajapati</p></div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
-                        </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"We have had a fantastic relationship with Pradeep Jha for the last 9 years. He is incredibly reliable and handles absolutely everything. JKP is our trusted guy in real estate."</p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">MS</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Mandeep Singh</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">Y3</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Yukta 34</p></div>
                     </div>
                 </div>
 
-                <!-- Mirror Set 2 -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Best property dealer near me for buying flats. Clear titles and verified properties only."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Highly trusted by real estate investors. They don’t just sell the property; they also help investors manage future resale and tenancy."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">CS</div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">HV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">harishankar vats</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Pradeep Jha is a Genuine real estate agent in Nalasopara. No false promises, clear communication from day one."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">KV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Khushi Vinayak</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Exceptional portfolio for investor options. Helped me lock in a high-floor under-construction unit with premium views at a discount."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">HP</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Himanshu Patil</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best property dealer near me for buying flats. Clear titles and verified properties only."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">CS</div>
                         <div><p class="font-bold text-slate-900 text-sm">Chirag Shetty</p></div>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Best property dealer in Nalasopara for real estate investments. They suggested an under-construction 1 BHK with excellent future ROI, excellent services."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Pradeep Jha is the absolute best person for property investments in the Vasai, Virar, and Nalasopara region"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">RC</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Raj Choudhary</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Shahid Khan</p></div>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all cursor-pointer">
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
                     <div>
-                        <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-4">
                             <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
                         </div>
-                        <p class="text-slate-700 italic leading-relaxed mb-6">"Bought my first 2 BHK flat in Nalasopara West through Jay Keshav Property. Excellent guidance and fully transparent deal."</p>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Professional and one of the best real estate agent / property dealer located in nalasopara. They showed us premium residential apartments within our budget in Vasai"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
                     </div>
-                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4">
-                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">SV</div>
-                        <div><p class="font-bold text-slate-900 text-sm">Shubham Varma</p></div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">DJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Dheeraj Jha</p></div>
                     </div>
                 </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"One thing about JAY KESHAV PROPERTY is that they give you complete guidance to buy the property, specially if you are planning to buy in Nalasopara(W) this would be the best place to make a deal"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">DC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">durgesh choudhary</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Excellent experience of buying home very helpful nature."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">NJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Nitesh Jha</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best and rera verified real estate agent"</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">KT</div>
+                        <div><p class="font-bold text-slate-900 text-sm">kamlesh Tiwari</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Deal done"</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">SC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sujit Choudhary</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Very transparent dealing. Highly recommend Jay Keshav Property for anyone looking to invest in Vasai-Virar real estate"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">sankhanila kuiti</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"They don't just show you houses; they help with the entire home loan process. Got my loan approved easily through their banking contacts."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">AH</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Ankush Handa</p></div>
+                    </div>
+                </div>
+
             </div>
+            
+            <!-- ARIA HIDDEN DUPLICATE (Search Engines Ignore this to avoid SEO penalty!) -->
+            <div class="marquee-content-right" aria-hidden="true">
+                
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Jay Keshav Property is the most trusted name for rentals in Nalasopara. Safe and transparent dealing."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">Y3</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Yukta 34</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Highly trusted by real estate investors. They don’t just sell the property; they also help investors manage future resale and tenancy."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">HV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">harishankar vats</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Pradeep Jha is a Genuine real estate agent in Nalasopara. No false promises, clear communication from day one."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">KV</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Khushi Vinayak</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Exceptional portfolio for investor options. Helped me lock in a high-floor under-construction unit with premium views at a discount."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">HP</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Himanshu Patil</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best property dealer near me for buying flats. Clear titles and verified properties only."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">CS</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Chirag Shetty</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Pradeep Jha is the absolute best person for property investments in the Vasai, Virar, and Nalasopara region"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Shahid Khan</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Professional and one of the best real estate agent / property dealer located in nalasopara. They showed us premium residential apartments within our budget in Vasai"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">DJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Dheeraj Jha</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"One thing about JAY KESHAV PROPERTY is that they give you complete guidance to buy the property, specially if you are planning to buy in Nalasopara(W) this would be the best place to make a deal"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">DC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">durgesh choudhary</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Excellent experience of buying home very helpful nature."</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold">NJ</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Nitesh Jha</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Best and rera verified real estate agent"</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">KT</div>
+                        <div><p class="font-bold text-slate-900 text-sm">kamlesh Tiwari</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-4">"Deal done"</p>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-bold">SC</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Sujit Choudhary</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"Very transparent dealing. Highly recommend Jay Keshav Property for anyone looking to invest in Vasai-Virar real estate"</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">SK</div>
+                        <div><p class="font-bold text-slate-900 text-sm">sankhanila kuiti</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md review-card flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-amber-400 text-lg flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 opacity-80">
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed mb-2 md:line-clamp-none line-clamp-3 transition-all duration-300">"They don't just show you houses; they help with the entire home loan process. Got my loan approved easily through their banking contacts."</p>
+                        <button onclick="toggleReviewText(this)" class="md:hidden text-amber-600 font-bold text-xs uppercase tracking-wider mt-1 mb-4 hover:text-amber-700 transition-colors" tabindex="-1">Read More</button>
+                    </div>
+                    <div class="flex items-center gap-4 border-t border-slate-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">AH</div>
+                        <div><p class="font-bold text-slate-900 text-sm">Ankush Handa</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- NEW FLASHY "SEE ALL REVIEWS" BUTTON -->
+        <div class="mt-12 text-center relative z-10">
+            <a href="reviews.html" class="inline-flex btn-modern-effect px-8 py-4 bg-[#0D1B2A] hover:bg-slate-800 text-white font-bold rounded-xl transition-all shadow-lg text-center uppercase tracking-widest text-sm group">
+                See All Reviews & Client Stories <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform ml-2"></i>
+            </a>
         </div>
     </section>
 
@@ -1166,7 +1625,7 @@
                                 </select>
                             </div>
                         </div>
-
+                    
                         <div class="grid sm:grid-cols-2 gap-5 pt-2 border-t border-slate-100 mt-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Preferred Day to Talk *</label>
@@ -1258,6 +1717,21 @@
             } else {
                 menu.classList.add('hidden'); menu.classList.remove('flex');
                 icon.classList.replace('fa-times', 'fa-bars'); icon.classList.remove('text-amber-500');
+            }
+        }
+
+        function toggleReviewText(btn) {
+            const textElement = btn.previousElementSibling;
+            const marqueeContainer = btn.closest('.marquee-container');
+
+            if (textElement.classList.contains('line-clamp-3')) {
+                textElement.classList.remove('line-clamp-3');
+                btn.innerText = 'Read Less';
+                if(marqueeContainer) marqueeContainer.classList.add('paused');
+            } else {
+                textElement.classList.add('line-clamp-3');
+                btn.innerText = 'Read More';
+                if(marqueeContainer) marqueeContainer.classList.remove('paused');
             }
         }
 
