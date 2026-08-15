@@ -21,7 +21,6 @@
     <meta property="og:url" content="https://www.jkpestates.com/reviews.html">
     <meta property="og:type" content="website">
 
-    <!-- YOUR EXACT SCHEMA CODE -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -130,12 +129,11 @@
         .btn-modern-effect::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: all 0.6s ease; z-index: -1; }
         .btn-modern-effect:hover::before { left: 100%; }
         
-        /* Masonry Grid Card Styling to prevent breaking inside columns */
         .masonry-card {
             break-inside: avoid-column;
-            -webkit-column-break-inside: avoid; /* Fix for Safari/Chrome */
-            margin-bottom: 2rem !important; /* Forces the gap */
-            display: block; /* Changed from inline-block to fix sticky margins */
+            -webkit-column-break-inside: avoid;
+            margin-bottom: 2rem !important;
+            display: block;
             width: 100%;
         }
     </style>
@@ -155,7 +153,6 @@
                 <a href="index.html" class="hover:text-amber-600 transition-colors">HOME</a>
                 <a href="services.html" class="hover:text-amber-600 transition-colors">SERVICES</a>
                 <a href="why-us.html" class="hover:text-amber-600 transition-colors">WHY US</a>
-                <!-- Updated to point specifically to reviews.html -->
                 <a href="reviews.html" class="text-amber-600 transition-colors">REVIEWS</a>
                 <a href="index.html#contact" class="hover:text-amber-600 transition-colors">CONTACT</a>
             </nav>
@@ -189,34 +186,135 @@
         </div>
     </header>
 
-    <!-- PAGE HERO -->
     <section class="pt-32 pb-16 bg-[#0D1B2A] relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('banner.png')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">Reviews</span>
+            <span class="text-amber-500 font-bold tracking-widest text-sm uppercase">100+ Verified Reviews & Ratings</span>
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-wide text-white mt-4 font-cinzel uppercase">Client Success Stories</h1>
-            <p class="text-slate-300 mt-6 max-w-2xl mx-auto text-lg">Don't just take our word for it. Read what real families and investors have to say about their experience with Jay Keshav Property.</p>
+            <p class="text-slate-300 mt-6 max-w-2xl mx-auto text-lg mb-8">Don't just take our word for it. Read what real families and investors have to say about their experience with Jay Keshav Property.</p>
             
-           <div class="flex justify-center items-center gap-3 sm:gap-4 mt-8 bg-white/10 backdrop-blur-md border border-white/20 inline-flex px-6 py-3 rounded-full">
-    <!-- <span class="text-white font-bold text-xl"> 5 </span> -->
-    <div class="text-amber-400 text-lg flex gap-1">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-    </div>
-    <div class="flex items-center gap-2 border-l border-white/20 pl-4">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-4 w-4 bg-white rounded-full p-0.5">
-        <span class="text-slate-200 text-sm font-semibold tracking-wide">Verified Reviews</span>
-    </div>
-</div>
+            <!-- Dual Review Platform Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                
+                <!-- Google Badge -->
+                <a href="https://g.page/r/CWe0mpRTfBaHEBE/review" target="_blank" class="flex items-center justify-between gap-4 bg-[#152437] hover:bg-[#1C2E45] border border-white/10 px-6 py-3 rounded-full transition-all shadow-lg group w-full sm:w-auto">
+                    <span class="font-extrabold text-xl tracking-tight">
+                        <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
+                    </span>
+                    <div class="text-amber-400 text-sm flex gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="h-6 w-px bg-white/20"></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-6 w-6 bg-white rounded-full p-0.5 group-hover:scale-110 transition-transform">
+                    </div>
+                </a>
+
+                <!-- JustDial Badge -->
+                <a href="https://www.justdial.com/Palghar/Jay-Keshav-Property-100Feet-Road-Nalasopara-West/022PXX22-XX22-150617085433-E2U2_BZDET" target="_blank" class="flex items-center justify-between gap-4 bg-[#152437] hover:bg-[#1C2E45] border border-white/10 px-6 py-3 rounded-full transition-all shadow-lg group w-full sm:w-auto">
+                    <span class="font-extrabold text-xl tracking-tight">
+                        <span class="text-[#0052cc]">Just</span><span class="text-[#FF6A00]">dial</span>
+                    </span>
+                    <div class="text-amber-400 text-sm flex gap-1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="h-6 w-px bg-white/20"></div>
+                        <div class="h-6 w-6 bg-white rounded-full flex items-center justify-center font-black text-[11px] tracking-tighter shadow-sm group-hover:scale-110 transition-transform">
+                            <span class="text-[#0052cc]">J</span><span class="text-[#FF6A00]">d</span>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
         </div>
     </section>
 
-    <!-- MASONRY REVIEWS GRID (Increased Gaps) -->
+    <!-- MASONRY REVIEWS GRID -->
     <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-0">
+
+            <!-- Verified Google REVIEWS -->
+            <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-amber-400 text-sm flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-5 w-5 opacity-80">
+                    </div>
+                    <p class="text-slate-700 italic leading-relaxed mb-6">"Highly recommend Jay Keshav Property! They helped us find a beautiful flat in the Blue Berry apartment complex in Nalasopara. They understood our requirements perfectly and guided us through the entire process, including the home loan and final registration. Truly the best property dealer in the Vasai-Virar area for hassle-free service."</p>
+                </div>
+                <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">HP</div>
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Hidden Psychology</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-amber-400 text-sm flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-5 w-5 opacity-80">
+                    </div>
+                    <p class="text-slate-700 italic leading-relaxed mb-6">"We recently bought a resale flat in Jay Vijay Nagari through Jay Keshav Property, and the experience was fantastic. Buying a resale property can be stressful with all the society transfer paperwork, but their team handled the documents and registry flawlessly. Excellent dealer I found in Nalasopara West for a smooth, transparent deal."</p>
+                </div>
+                <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">PG</div>
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Pushpak Girase</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-amber-400 text-sm flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-5 w-5 opacity-80">
+                    </div>
+                    <p class="text-slate-700 italic leading-relaxed mb-6">"In a market full of unverified agents, Jay Keshav Property stands out for true honesty. Unlike other brokers who hesitate when asked for credentials, they willingly shared their MahaRERA license details before we even began site visits. They helped us secure a clear-title 3 BHK with zero stress. Really we're glad to find the best property dealer in Nalasopara!"</p>
+                </div>
+                <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold">KR</div>
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Kejal Rathod</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-amber-400 text-sm flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-5 w-5 opacity-80">
+                    </div>
+                    <p class="text-slate-700 italic leading-relaxed mb-6">"We checked multiple brokers, but Jay Keshav Property is easily a top rated real estate agent in Nalasopara West. 100% transparent deals and very reasonable pricing."</p>
+                </div>
+                <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">SG</div>
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Sandeep Kumar Gupta</p>
+                        <p class="text-xs text-slate-400 font-medium">Local Guide</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-amber-400 text-sm flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="h-5 w-5 opacity-80">
+                    </div>
+                    <p class="text-slate-700 italic leading-relaxed mb-6">"Professional, fair pricing, and clear communication. The best real estate agency in the area."</p>
+                </div>
+                <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">AM</div>
+                    <div>
+                        <p class="font-bold text-slate-900 text-sm">Alka Mandviya</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="masonry-card bg-white p-8 rounded-3xl border border-slate-200/60 shadow-md hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between">
                 <div>
@@ -227,7 +325,7 @@
                     <p class="text-slate-700 italic leading-relaxed mb-6">"Excellent service from start to finish. They understand the Nalasopara West real estate market perfectly and helped us finalize a spacious 2BHK apartment. They handled all the paperwork and local legalities very professionally. They are definitely the go-to team for anyone looking to invest in property around this region"</p>
                 </div>
                 <div class="flex items-center gap-4 border-t border-slate-100 pt-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">SK</div>
+                    <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold">SK</div>
                     <div>
                         <p class="font-bold text-slate-900 text-sm">Sahil Kalal</p>
                     </div>
