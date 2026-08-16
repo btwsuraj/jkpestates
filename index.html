@@ -1269,8 +1269,8 @@
         </div>
     </section>
 
-    <!-- CONTACT & FORM (Now with Locality Dropdown) -->
-    <section id="contact" class="py-24 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- CONTACT & FORM -->
+    <section id="contact" class="py-24 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div class="grid lg:grid-cols-12 gap-16">
             
             <!-- Left Side Contact Info -->
@@ -1301,7 +1301,7 @@
                         <a href="https://www.facebook.com/jkpestates/" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-200 text-[#1877f2] flex items-center justify-center hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] transition-all shadow-sm"><i class="fab fa-facebook-f text-xl"></i></a>
                         <a href="https://www.youtube.com/@JayKeshavProperty" target="_blank" class="w-12 h-12 rounded-full bg-slate-50 border border-slate-200 text-red-600 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all shadow-sm"><i class="fab fa-youtube text-xl"></i></a>
                     </div>
-                    
+
                     <!-- NEW VISITING CARD PDF BUTTON -->
                     <div class="pt-6 mt-2">
                         <a href="visiting-card.pdf" download="Jay_Keshav_Property_Visiting_Card.pdf" class="inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-slate-50 border border-slate-200 text-slate-700 font-bold rounded-xl hover:border-amber-400 hover:text-amber-600 hover:bg-white transition-all shadow-sm text-sm group w-full sm:w-auto">
@@ -1324,7 +1324,7 @@
                 </div>
             </div>
             
-            <!-- Right Side Form with New Locality Features -->
+            <!-- Right Side Form with New Requirements & Locality -->
             <div id="lead-form" class="lg:col-span-7 relative scroll-mt-24">
                 <div class="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 rounded-[2.5rem] transform rotate-2 scale-105 opacity-15"></div>
                 <div class="bg-white p-8 sm:p-12 rounded-[2.5rem] border border-slate-200 shadow-2xl relative z-10">
@@ -1355,16 +1355,31 @@
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 ml-1">What are you looking to do? *</label>
                             <div class="grid grid-cols-3 gap-3 sm:gap-4">
                                 <label class="flex flex-col items-center justify-center gap-2 p-3 sm:p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-all group">
-                                    <input type="radio" name="Requirement" value="Buy" required class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
+                                    <input type="radio" name="Requirement" value="Buy" required onclick="togglePurposeField()" class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
                                     <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-amber-700">Buy</span>
                                 </label>
                                 <label class="flex flex-col items-center justify-center gap-2 p-3 sm:p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-all group">
-                                    <input type="radio" name="Requirement" value="Rent" required class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
+                                    <input type="radio" name="Requirement" value="Rent" required onclick="togglePurposeField()" class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
                                     <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-amber-700">Rent</span>
                                 </label>
                                 <label class="flex flex-col items-center justify-center gap-2 p-3 sm:p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-all group">
-                                    <input type="radio" name="Requirement" value="Sell" required class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
+                                    <input type="radio" name="Requirement" value="Sell" required onclick="togglePurposeField()" class="w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none mb-1">
                                     <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-amber-700 text-center">Sell</span>
+                                </label>
+                            </div>
+                        </div>
+                    
+                        <!-- CONDITIONALLY HIDDEN PURPOSE FIELD -->
+                        <div id="purpose-container" class="pt-2 hidden animate-fade-in">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 ml-1">Primary Purpose *</label>
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                                <label class="flex items-center justify-center gap-2 sm:gap-3 p-3.5 sm:p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-colors group">
+                                    <input type="radio" name="Buying_Purpose" value="Self-Use" class="purpose-radio w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none">
+                                    <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-amber-700">Self-Use</span>
+                                </label>
+                                <label class="flex items-center justify-center gap-2 sm:gap-3 p-3.5 sm:p-4 border border-slate-200 rounded-2xl cursor-pointer hover:bg-amber-50 hover:border-amber-200 transition-colors group">
+                                    <input type="radio" name="Buying_Purpose" value="Investment" class="purpose-radio w-4 h-4 text-amber-600 focus:ring-amber-500 outline-none">
+                                    <span class="text-xs sm:text-sm font-bold text-slate-700 group-hover:text-amber-700">Investment</span>
                                 </label>
                             </div>
                         </div>
@@ -1393,7 +1408,6 @@
                             </div>
                         </div>
 
-                        <!-- NEW LOCALITY & TIMELINE ROW -->
                         <div class="grid sm:grid-cols-2 gap-5 pt-2">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">Preferred Locality *</label>
@@ -1516,6 +1530,25 @@
     </footer>
 
     <script>
+        function togglePurposeField() {
+            const buyRadio = document.querySelector('input[name="Requirement"][value="Buy"]');
+            const purposeContainer = document.getElementById('purpose-container');
+            const purposeRadios = document.querySelectorAll('.purpose-radio');
+
+            if (buyRadio && buyRadio.checked) {
+                purposeContainer.classList.remove('hidden');
+                // Make Buying Purpose required only when visible
+                purposeRadios.forEach(radio => radio.setAttribute('required', 'required'));
+            } else {
+                purposeContainer.classList.add('hidden');
+                // Remove required so Rent or Sell users don't get blocked submitting the form
+                purposeRadios.forEach(radio => {
+                    radio.removeAttribute('required');
+                    radio.checked = false;
+                });
+            }
+        }
+        
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
